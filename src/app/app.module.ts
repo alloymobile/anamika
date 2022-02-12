@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AlloymobileLibraryModule } from './shared/alloymobile-library/alloymobile-library.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { TermsOfServicePageComponent } from './public/terms-of-service-page/term
 import { PrivacyPolicyPageComponent } from './public/privacy-policy-page/privacy-policy-page.component';
 import { NavbarComponent } from './shared/routing/navbar/navbar.component';
 import { DashboardPageComponent } from './private/client-page/dashboard-page/dashboard-page.component';
+import { AccountPageComponent } from './private/client-page/account-page/account-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { DashboardPageComponent } from './private/client-page/dashboard-page/das
     NavbarComponent,
     TermsOfServicePageComponent,
     PrivacyPolicyPageComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -34,7 +37,8 @@ import { DashboardPageComponent } from './private/client-page/dashboard-page/das
     BrowserAnimationsModule,
     AlloymobileLibraryModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

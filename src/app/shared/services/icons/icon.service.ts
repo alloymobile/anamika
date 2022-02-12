@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { faApple, faAsymmetrik, faFacebook, faGoogle, faMicrosoft } from '@fortawesome/free-brands-svg-icons';
 import { faCalendar, faCheckSquare, faClock, faEdit, faFile, faFileAlt, faSave, faSquare, faStar as starEmpty } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -217,8 +218,30 @@ export class IconService {
 	}
 }
 
-export const getFontawasomeIcon = (icon?: string): appIcon => {
-  if(icon){
+export const getSizeProp = (size: string): SizeProp =>{
+  switch (size) {
+    case "xs":
+      return "xs";
+    case "sm":
+      return "sm";
+    case "lg":
+      return "lg";
+    case "1x":
+      return "1x";
+    case "2x":
+      return "2x";
+    case "3x":
+      return "3x";
+    case "4x":
+      return "4x";
+    case "5x":
+      return "5x";
+    default:
+      return "lg";
+  }
+}
+
+export const getFontawasomeIcon = (icon: string): appIcon => {
     switch (icon) {
       case "faDownload":
         return appIcon.DOWNLOAD;
@@ -246,8 +269,8 @@ export const getFontawasomeIcon = (icon?: string): appIcon => {
         return appIcon.MICROSOFT;
       case "faApple":
         return appIcon.APPLE;
+      default:
+        return appIcon.APPLOGO;
     }
-  }
-  return appIcon.APPLOGO;
 };
 

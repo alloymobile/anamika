@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccountPageComponent } from './private/client-page/account-page/account-page.component';
 import { ClientPageComponent } from './private/client-page/client-page.component';
 import { DashboardPageComponent } from './private/client-page/dashboard-page/dashboard-page.component';
 import { DetailPageComponent } from './public/home-page/detail-page/detail-page.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'drawing/:id',component: DetailPageComponent},
   {path:'login',component: LoginPageComponent},
   { path: 'client', component: ClientPageComponent, children: [
-      {path: '', component: DashboardPageComponent}
+      {path: '', component: DashboardPageComponent},
+      {path: 'account', component: AccountPageComponent}
     ],
     canActivate: [AuthService]
   },

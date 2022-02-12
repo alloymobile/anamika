@@ -24,21 +24,21 @@ export class NavbarComponent implements OnInit {
     this.dataService.client.subscribe(client=> this.client = client);
   }
 
-  selectRole(id: number){
-    if(this.client.roles && this.client.roles.length > 0){
-      this.client.roles.map(r=>r.selected = false);
-      this.client.roles[id].selected = true;
-      // this.selectedRole = this.client.roles[id];
-      switch(this.client.roles[id].name){
-        case "ROLE_CLIENT":
-          this.router.navigate(['/main']);
-        break;
-        case "ROLE_ADMIN":
-          this.router.navigate(['/admin']);
-        break;
-      }
-    }
-  }
+  // selectRole(id: number){
+  //   if(this.client.roles && this.client.roles.length > 0){
+  //     this.client.roles.map(r=>r.selected = false);
+  //     this.client.roles[id].selected = true;
+  //     // this.selectedRole = this.client.roles[id];
+  //     switch(this.client.roles[id].name){
+  //       case "ROLE_CLIENT":
+  //         this.router.navigate(['/main']);
+  //       break;
+  //       case "ROLE_ADMIN":
+  //         this.router.navigate(['/admin']);
+  //       break;
+  //     }
+  //   }
+  // }
 
   logout(){
     this.client = new Client(undefined);

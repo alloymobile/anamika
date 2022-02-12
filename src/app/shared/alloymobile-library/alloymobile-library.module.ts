@@ -18,6 +18,7 @@ import { CardListComponent } from './tissue/card-list/card-list.component';
 import { CardThumbComponent } from './tissue/card-thumb/card-thumb.component';
 import { CardGalleryComponent } from './tissue/card-gallery/card-gallery.component';
 import { CardDetailComponent } from './tissue/card-detail/card-detail.component';
+import { PillComponent } from './tissue/pill/pill.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { RouterModule } from '@angular/router';
     CardThumbComponent,
     CardGalleryComponent,
     CardDetailComponent,
+    PillComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +60,7 @@ import { RouterModule } from '@angular/router';
     CardThumbComponent,
     CardGalleryComponent,
     CardDetailComponent,
+    PillComponent
   ],
   providers:[
     IconService

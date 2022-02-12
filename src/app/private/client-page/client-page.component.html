@@ -1,1 +1,12 @@
-<p>client-page works!</p>
+<div class="row d-flex h-100 g-0">
+  <div class="sidebar bg-white">
+    <div class="list-group h-100">
+      <div *ngFor="let pill of pills">
+        <app-pill [pill]="pill"></app-pill>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+</div>

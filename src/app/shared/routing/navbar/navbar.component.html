@@ -56,7 +56,7 @@
             <small class="p-1">{{ client.name }}</small>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li *ngFor="let role of client.roles; index as i">
+            <!-- <li *ngFor="let role of client.roles; index as i">
               <button class="dropdown-item" (click)="selectRole(i)">
                 <span *ngIf="role.selected">
                   <app-icon [icon]="icon.SELECT" classes="mr-3" size="lg" ></app-icon>
@@ -64,7 +64,7 @@
                 {{ role.name | uppercase }}
                 </button>
               <div class="dropdown-divider"></div>
-            </li>
+            </li> -->
             <li>
               <button class="dropdown-item" (click)="logout()">Logout</button>
             </li>
