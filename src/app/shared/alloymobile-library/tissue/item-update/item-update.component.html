@@ -1,0 +1,16 @@
+<div class="input-group d-flex justify-content-center border rounded-pill">
+  <div class="input-group-prepend ">
+      <button class="btn" type="button" id="button-addon1" (click)="onSubtract()">
+        <app-icon [icon]="icon.MINUS" [size]="size" ></app-icon>
+      </button>
+  </div>
+  <span class="w-25 inline-block d-flex justify-content-center align-items-center bg-light">
+    {{_quantity != 0 ? _quantity : ''}}
+  </span>
+  <div class="input-group-append">
+      <button class="btn rounded-circle" type="button" id="button-addon1" (click)="onAdd()">
+        <app-icon [icon]="icon.ADD" [size]="size" ></app-icon>
+      </button>
+  </div>
+</div>
+

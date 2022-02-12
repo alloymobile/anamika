@@ -1,0 +1,26 @@
+  <!--Pagignation links-->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      <li class="page-item">
+        <a
+          class="page-link"
+          >Previous</a
+        >
+      </li>
+      <li
+        class="page-item"
+        *ngFor="let p of page.pages"
+        [class.active]="p === active.page"
+      >
+        <a class="fw-bold btn btn-outline-dark btn-sm mx-1">{{
+          p + 1
+        }}</a>
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link"
+          >Next</a
+        >
+      </li>
+    </ul>
+  </nav>

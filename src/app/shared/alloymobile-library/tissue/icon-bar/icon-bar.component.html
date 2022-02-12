@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-center">
+  <button *ngFor="let i of _iconBar"
+  class="btn btn-outline-dark btn-sm border-0 m-1"
+  [matTooltip]="i.tooltip" (click)="output.emit(i)"
+  >
+    <app-icon [icon]="i.icon" classes="mr-3" size="lg" ></app-icon>
+  </button>
+</div>

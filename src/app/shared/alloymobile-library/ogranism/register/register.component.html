@@ -1,0 +1,103 @@
+<div class="d-flex justify-content-center text-center h-100">
+  <form class="p-5" [formGroup]="registerForm" (ngSubmit)="registerClient()">
+    <div class="form-group m-2">
+      <div class="alert alert-danger" *ngIf="_input.error != ''">
+        {{ _input.error  }}
+      </div>
+    </div>
+    <app-icon [icon]="icon.REGISTER" classes="mr-3" size="3x" ></app-icon>
+    <div class="form-floating p-2">
+      <input
+        type="text"
+        class="form-control"
+        id="inputName"
+        formControlName="name"
+        placeholder="John Doe"
+      />
+      <label for="inputName">Full Name</label>
+      <div *ngIf="_input.submitted && formControl.email.errors" class="alert alert-danger m-0 p-0">
+        <div *ngIf="formControl.email.errors.required">
+          Full name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-floating p-2">
+      <input
+        type="email"
+        class="form-control"
+        id="inputEmail"
+        formControlName="email"
+        placeholder="name@example.com"
+      />
+      <label for="inputEmail">Email address</label>
+      <small id="emailHelp" class="form-text text-muted ml-2"
+        >We'll never share your email with anyone else.</small
+      >
+      <div *ngIf="_input.submitted && formControl.email.errors" class="alert alert-danger m-0 p-0">
+        <div *ngIf="formControl.email.errors.email">Email must be valid.</div>
+        <div *ngIf="formControl.email.errors.required">Email is required.</div>
+      </div>
+    </div>
+    <div class="form-floating p-2">
+      <input
+        type="password"
+        class="form-control"
+        id="inputPassword"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <label for="inputPassword">Password</label>
+      <div *ngIf="_input.submitted && formControl.password.errors" class="alert alert-danger m-0 p-0">
+        <div *ngIf="formControl.password.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="formControl.password.errors.pattern">
+          <h3>Password must contain the following:</h3>
+          <ul>
+            <li>Password should be alphanumeric</li>
+            <li>A letter of the password should be capital</li>
+            <li>Password must contain a special character (@, $, !, &, etc)</li>
+            <li>Password length must be greater than 7 characters</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="form-floating p-2">
+      <input
+        type="password"
+        class="form-control"
+        id="inputReTypePassword"
+        formControlName="reTypePassword"
+        placeholder="Retype Password"
+      />
+      <label for="inputReTypePassword">Retype Password</label>
+      <div
+        *ngIf="_input.submitted && formControl.reTypePassword.errors"
+        class="alert alert-danger m-0 p-0"
+      >
+        <div *ngIf="formControl.reTypePassword.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="registerForm.hasError('mismatch')">
+          Password do not match.
+        </div>
+        <div *ngIf="formControl.reTypePassword.errors.pattern">
+          <h3>Password must contain the following:</h3>
+          <ul>
+            <li>Password should be alphanumeric</li>
+            <li>A letter of the password should be capital</li>
+            <li>Password must contain a special character (@, $, !, &, etc)</li>
+            <li>Password length must be greater than 7 characters</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="p-2">
+      <button class="w-100 btn btn-lg btn-dark" type="submit" [disabled]="_input.showSpinner">
+        <app-icon [icon]="icon.LOADING" classes="mr-3" size="lg" [spin]="_input.showSpinner" *ngIf="_input.showSpinner"></app-icon>
+        Sign in
+      </button>
+    </div>
+    <p class="text-muted">&copy;2021 AlloyMobile Incorporation</p>
+  </form>
+</div>

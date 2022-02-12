@@ -1,0 +1,51 @@
+<div class="row m-2 bg-light">
+  <div class="col-12 col-md-8">
+    <form
+      class="form-inline text-center d-flex justify-content-center"
+    >
+      <div class="input-group">
+        <input
+          type="search"
+          name="search"
+          class="form-control"
+          id="inlineFormInputGroupUsername"
+          placeholder="Search..."
+        />
+        <span class="input-group-append">
+          <button
+            class="input-group-text"
+            type="button"
+          >
+          <app-icon [icon]="icon.SEARCH" classes="mr-3" size="lg" ></app-icon>
+          </button>
+        </span>
+      </div>
+    </form>
+  </div>
+  <div class="col-12 col-md-4 d-flex justify-content-end">
+    <button
+      class="btn btn-outline-dark btn-sm border-0 mx-1"
+      matTooltip="print"
+    >
+    <app-icon [icon]="icon.PRINT" classes="mr-3" size="lg" ></app-icon>
+    </button>
+    <button
+      class="btn btn-outline-dark btn-sm border-0 mx-1"
+      matTooltip="upload"
+    >
+    <app-icon [icon]="icon.UPLOAD" classes="mr-3" size="lg" ></app-icon>
+    </button>
+    <button
+      class="btn btn-outline-dark btn-sm border-0 mx-1"
+      matTooltip="download"
+    >
+    <app-icon [icon]="icon.DOWNLOAD" classes="mr-3" size="lg" ></app-icon>
+    </button>
+    <button
+      class="btn btn-outline-dark btn-sm border-0 mx-1"
+      matTooltip="add"
+    >
+    <app-icon [icon]="icon.ADD" classes="mr-3" size="lg" ></app-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container-fluid sticky-top bg-light">
+  <header
+    class="
+      d-flex
+      flex-wrap
+      align-items-center
+      justify-content-center justify-content-md-between
+      border-bottom
+    "
+  >
+    <a
+      routerLink=""
+      class="
+        h3
+        d-flex
+        justify-content-center
+        col-md-3
+        mb-2 mb-md-0
+        text-dark text-decoration-none
+      "
+    >
+    <app-icon [icon]="icon.APPLOGO" classes="mr-3" size="lg" ></app-icon>
+    <span class="ml-2">Anamika</span>
+    </a>
+
+    <div class="nav col-12 col-md-auto mb-2 justify-content-center py-2">
+      <a routerLink="" class="btn btn-outline-dark border-0 px-2"
+        ><span class="h6">Home</span></a
+      >
+      <a routerLink="about" class="btn btn-outline-dark border-0 px-2"
+        ><span class="h6">About us</span></a
+      >
+      <a routerLink="checkout" class="btn btn-outline-dark border-0 px-2"
+        ><span class="h6">Donate</span></a
+      >
+      <a routerLink="contact" class="btn btn-outline-dark border-0 px-2"
+        ><span class="h6">Blog</span></a
+      >
+      <a routerLink="" class="btn btn-outline-dark border-0 px-2"
+        ><span class="h6">Contact us</span></a
+      >
+    </div>
+    <div class="col-md-3 text-center">
+      <ng-container *ngIf="client.name != ''; then loggedIn; else loggedOut">
+      </ng-container>
+      <ng-template #loggedIn>
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-dark btn-sm border-1 mx-1 dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <app-icon [icon]="icon.PERSON" classes="mr-3" size="lg" ></app-icon>
+            <small class="p-1">{{ client.name }}</small>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li *ngFor="let role of client.roles; index as i">
+              <button class="dropdown-item" (click)="selectRole(i)">
+                <span *ngIf="role.selected">
+                  <app-icon [icon]="icon.SELECT" classes="mr-3" size="lg" ></app-icon>
+                </span>
+                {{ role.name | uppercase }}
+                </button>
+              <div class="dropdown-divider"></div>
+            </li>
+            <li>
+              <button class="dropdown-item" (click)="logout()">Logout</button>
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+      <ng-template #loggedOut>
+          <a
+            routerLink="login"
+            type="button"
+            class="btn btn-outline-dark btn-sm border-0 mx-1"
+            matTooltip="Login"
+          >
+          <app-icon [icon]="icon.LOGIN" classes="mr-3" size="lg" ></app-icon>
+          </a>
+      </ng-template>
+    </div>
+  </header>
+</div>

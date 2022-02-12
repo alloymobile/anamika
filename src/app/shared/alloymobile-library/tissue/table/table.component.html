@@ -1,0 +1,51 @@
+<table class="{{classes}}">
+  <thead>
+    <tr>
+      <th
+        scope="col"
+        *ngFor="let h of _tableModel[0] | keyvalue"
+      >
+        {{ capitalize(h.key) }}
+      </th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let body of _tableModel; index as j">
+      <td *ngFor="let col of body | keyvalue">
+        <ng-container
+          *ngIf="col.key != 'image'; then value; else image"
+        ></ng-container>
+        <ng-template #value>
+          <ng-container *ngIf="col.key == 'Slno'; then slno ; else data">
+          </ng-container>
+          <ng-template #slno>
+            <span>{{ j+1 }}</span>
+          </ng-template>
+          <ng-template #data>
+            <span>{{ col.value }}</span>
+          </ng-template>
+        </ng-template>
+        <ng-template #image>
+          <img [src]="col.value" width="40 px" height="40 px" />
+        </ng-template>
+      </td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Edit and Delete">
+          <button
+            class="btn btn-outline-dark btn-sm border-0 mx-1"
+            matTooltip="edit"
+          >
+            <app-icon [icon]="icon.EDIT" classes="mr-3" size="sm"></app-icon>
+          </button>
+          <button
+            class="btn btn-outline-dark btn-sm border-0 mx-1"
+            matTooltip="delete"
+          >
+            <app-icon [icon]="icon.DELETE" classes="mr-3" size="sm"></app-icon>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
