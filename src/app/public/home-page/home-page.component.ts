@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
-import { DrawingService } from 'src/app/shared/drawing/drawing.service';
+import { DrawingService } from 'src/app/shared/services/drawing/drawing.service';
 import { Client } from 'src/app/shared/model/client.model';
 import { Drawing } from 'src/app/shared/model/drawing.model';
 import { DataService } from 'src/app/shared/services/data/data.service';

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { DataService } from '../services/data/data.service';
+import { DataService } from '../data/data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +36,4 @@ export class DrawingService {
       .get(apiEndPoint,{ headers: this.headers })
       .pipe(catchError( error => throwError(()=> new Error(error))));
   }
-
-
 }

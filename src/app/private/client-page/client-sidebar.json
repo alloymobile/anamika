@@ -3,8 +3,6 @@
         [
             {"id":1,"title":"Dashboard","icon":"faTachometerAlt","link":"./","size":"lg"},
             {"id":2,"title":"Account","icon":"faUser","link":"account","size":"lg"},
-            {"id":3,"title":"Preference","icon":"faUserCog","link":"./","size":"lg"},
-            {"id":4,"title":"Product","icon":"faStore","link":"./","size":"lg"},
-            {"id":5,"title":"User Message","icon":"faEnvelopeOpenText","link":"./","size":"lg"}
+            {"id":3,"title":"Resource","icon":"faUserCog","link":"resource","size":"lg"}
         ]
 }

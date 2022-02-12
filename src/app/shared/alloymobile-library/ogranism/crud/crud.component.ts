@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Drawing } from 'src/app/shared/model/drawing.model';
 import { appIcon } from '../../../services/icons/icon.service';
 
 @Component({
@@ -7,7 +8,11 @@ import { appIcon } from '../../../services/icons/icon.service';
   styleUrls: ['./crud.component.css']
 })
 export class CrudComponent implements OnInit {
-	public icon = appIcon;
+	icon = appIcon;
+  _drawings: Drawing[] = [];
+  @Input() set drawings(drawings: Drawing[]){
+    this._drawings = drawings;
+  }
   constructor() { }
 
   ngOnInit(): void {

@@ -5,7 +5,7 @@
         scope="col"
         *ngFor="let h of _tableModel[0] | keyvalue"
       >
-        {{ capitalize(h.key) }}
+        <span *ngIf="h.key != 'id'">{{ capitalize(h.key) }}</span>
       </th>
       <th scope="col">Action</th>
     </tr>
@@ -14,17 +14,10 @@
     <tr *ngFor="let body of _tableModel; index as j">
       <td *ngFor="let col of body | keyvalue">
         <ng-container
-          *ngIf="col.key != 'image'; then value; else image"
+          *ngIf="col.key != 'imageUrl'; then value; else image"
         ></ng-container>
         <ng-template #value>
-          <ng-container *ngIf="col.key == 'Slno'; then slno ; else data">
-          </ng-container>
-          <ng-template #slno>
-            <span>{{ j+1 }}</span>
-          </ng-template>
-          <ng-template #data>
-            <span>{{ col.value }}</span>
-          </ng-template>
+            <span *ngIf="col.key != 'id'">{{ col.value }}</span>
         </ng-template>
         <ng-template #image>
           <img [src]="col.value" width="40 px" height="40 px" />

@@ -13,6 +13,7 @@ export class TableComponent implements OnInit {
   @Input() classes = 'table';
   @Input() set tableModel(tableModel){
     this._tableModel = tableModel;
+    console.log(this._tableModel);
   }
 
   constructor() {

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountPageComponent } from './private/client-page/account-page/account-page.component';
 import { ClientPageComponent } from './private/client-page/client-page.component';
 import { DashboardPageComponent } from './private/client-page/dashboard-page/dashboard-page.component';
+import { ResourcePageComponent } from './private/client-page/resource-page/resource-page.component';
 import { DetailPageComponent } from './public/home-page/detail-page/detail-page.component';
 import { HomePageComponent } from './public/home-page/home-page.component';
 import { LoginPageComponent } from './public/login-page/login-page.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'login',component: LoginPageComponent},
   { path: 'client', component: ClientPageComponent, children: [
       {path: '', component: DashboardPageComponent},
-      {path: 'account', component: AccountPageComponent}
+      {path: 'account', component: AccountPageComponent},
+      {path: 'resource', component: ResourcePageComponent}
     ],
     canActivate: [AuthService]
   },

@@ -17,6 +17,7 @@ import { PrivacyPolicyPageComponent } from './public/privacy-policy-page/privacy
 import { NavbarComponent } from './shared/routing/navbar/navbar.component';
 import { DashboardPageComponent } from './private/client-page/dashboard-page/dashboard-page.component';
 import { AccountPageComponent } from './private/client-page/account-page/account-page.component';
+import { ResourcePageComponent } from './private/client-page/resource-page/resource-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AccountPageComponent } from './private/client-page/account-page/account
     TermsOfServicePageComponent,
     PrivacyPolicyPageComponent,
     DashboardPageComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    ResourcePageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
