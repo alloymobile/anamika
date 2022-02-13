@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs';
-import { Drawing } from 'src/app/shared/model/drawing.model';
+import { Drawing, DrawingAction } from 'src/app/shared/model/drawing.model';
 import { DrawingService } from 'src/app/shared/services/drawing/drawing.service';
 import { appIcon } from 'src/app/shared/services/icons/icon.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ResourceModelComponent } from './resource-model/resource-model.component';
-import { Crud } from 'src/app/shared/alloymobile-library/ogranism/crud/crud.model';
 import { DataService } from '../../../shared/services/data/data.service'
 import { Client } from 'src/app/shared/model/client.model';
 import { Router } from '@angular/router';
@@ -26,12 +25,12 @@ export class ResourcePageComponent implements OnInit {
     , private matDialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.showSpinner = true;
     this.dataService.client.subscribe(client=> this.client = client);
     this.getDrawings();
   }
 
   getDrawings(){
+    this.showSpinner = true;
     this.drawings = [];
     this.drawingService.getDrawings().pipe(first()).subscribe((res: any)=>{
       res.content.forEach(element => {
@@ -41,24 +40,39 @@ export class ResourcePageComponent implements OnInit {
     });
   }
 
-  openDialog() {
+  openDialog(drawing: Drawing) {
     const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = drawing;
     const dialogRef = this.matDialog.open(ResourceModelComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(value => {
-      this.drawingService.addDrawing(value,this.client.token).pipe(first()).subscribe((res:any)=>{
-        this.getDrawings();
-      },error=>{
-        console.log(error);
-        if(error=='unAuthorized')
-          this.router.navigate(['/login']);
-      });
+    dialogRef.afterClosed().subscribe((value: Drawing) => {
+      this.showSpinner = true;
+      if(value.action == DrawingAction.EDIT){
+        this.drawingService.updateDrawing(value,this.client.token).pipe(first()).subscribe((res:any)=>{
+          this.getDrawings();
+          this.showSpinner = false;
+        },error=>{
+            this.router.navigate(['/login']);
+        });
+      }else if(value.action == DrawingAction.DELETE){
+        this.drawingService.deleteDrawing(value,this.client.token).pipe(first()).subscribe((res:any)=>{
+          this.getDrawings();
+          this.showSpinner = false;
+        },error=>{
+            this.router.navigate(['/login']);
+        });
+      }else{
+        this.drawingService.addDrawing(value,this.client.token).pipe(first()).subscribe((res:any)=>{
+          this.getDrawings();
+          this.showSpinner = false;
+        },error=>{
+            this.router.navigate(['/login']);
+        });
+      }
     });
   }
 
-  onCrudClicked(crud: Crud){
-    if(crud.search.add){
-      this.openDialog();
-    }
+  onCrudClicked(drawing: Drawing){
+    this.openDialog(drawing);
   }
 }

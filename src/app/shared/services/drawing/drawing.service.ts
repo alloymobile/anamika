@@ -54,4 +54,25 @@ export class DrawingService {
         .pipe(catchError( error => throwError(()=> new Error(error))));
     }
   }
+
+
+  //update drawing
+  updateDrawing(data: Drawing,token: string) {
+    let apiEndPoint = this.drawingApiUrl + '/api/v1/drawings' + '/' + data.id;
+    if (this.authService.checkJwtToken()) {
+      throw throwError(()=> new Error('unAuthorized'));
+    } else {
+      return this.http.put(apiEndPoint, data, { headers: this.createHeadder(token) });
+    }
+  }
+
+  //delete drawing
+  deleteDrawing(data: Drawing,token: string) {
+    let apiEndPoint = this.drawingApiUrl + '/api/v1/drawings' + '/' + data.id;
+    if (this.authService.checkJwtToken()) {
+      throw throwError(()=> new Error('unAuthorized'));
+    } else {
+      return this.http.delete(apiEndPoint, { headers: this.createHeadder(token) });
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Drawing } from 'src/app/shared/model/drawing.model';
 import { appIcon } from 'src/app/shared/services/icons/icon.service';
-import { SearchBar } from './search-bar.model';
 
 @Component({
   selector: 'app-search-bar',
@@ -9,8 +9,8 @@ import { SearchBar } from './search-bar.model';
 })
 export class SearchBarComponent implements OnInit {
 	icon = appIcon;
-  _searchBar: SearchBar = new SearchBar();
-  @Output() output: EventEmitter<SearchBar> = new EventEmitter<SearchBar>();
+  drawing: Drawing = new Drawing();
+  @Output() output: EventEmitter<Drawing> = new EventEmitter<Drawing>();
   constructor() {
   }
 
@@ -18,8 +18,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   onAddClicked(){
-    this._searchBar.add = true;
-    this.output.emit(this._searchBar);
+    this.output.emit(this.drawing);
   }
 
 }

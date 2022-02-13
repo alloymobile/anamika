@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Drawing, DrawingAction } from 'src/app/shared/model/drawing.model';
 import { appIcon } from 'src/app/shared/services/icons/icon.service';
 
 @Component({
@@ -13,13 +14,19 @@ export class TableComponent implements OnInit {
   @Input() classes = 'table';
   @Input() set tableModel(tableModel){
     this._tableModel = tableModel;
-    console.log(this._tableModel);
   }
+  @Output() output: EventEmitter<Drawing> = new EventEmitter<Drawing>();
 
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  onClicked(drawing,action: DrawingAction){
+    let data = new Drawing(drawing);
+    data.action = action;
+    this.output.emit(data);
   }
 
   capitalize(s) {
@@ -29,5 +36,9 @@ export class TableComponent implements OnInit {
 
   toString(val): string {
     return JSON.stringify(val);
+  }
+
+  get action(): typeof DrawingAction {
+    return DrawingAction;
   }
 }

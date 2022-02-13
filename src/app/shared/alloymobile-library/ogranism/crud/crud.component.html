@@ -1,3 +1,3 @@
 <app-search-bar (output)="onSearchClicked($event)"></app-search-bar>
-<app-table [tableModel]="_drawings"></app-table>
+<app-table [tableModel]="_drawings" (output)="onTableClicked($event)"></app-table>
 <app-pagignation></app-pagignation>

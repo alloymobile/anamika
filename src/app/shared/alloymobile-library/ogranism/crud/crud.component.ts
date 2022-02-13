@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Drawing } from 'src/app/shared/model/drawing.model';
 import { appIcon } from '../../../services/icons/icon.service';
-import { SearchBar } from '../../tissue/search-bar/search-bar.model';
-import { Crud } from './crud.model';
 
 @Component({
   selector: 'app-crud',
@@ -12,8 +10,8 @@ import { Crud } from './crud.model';
 export class CrudComponent implements OnInit {
 	icon = appIcon;
   _drawings: Drawing[] = [];
-  _crud: Crud = new Crud();
-  @Output() output: EventEmitter<Crud> = new EventEmitter<Crud>();
+  _drawing: Drawing = new Drawing();
+  @Output() output: EventEmitter<Drawing> = new EventEmitter<Drawing>();
   @Input() set drawings(drawings: Drawing[]){
     this._drawings = drawings;
   }
@@ -22,8 +20,13 @@ export class CrudComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSearchClicked(search: SearchBar){
-    this._crud.search = search;
-    this.output.emit(this._crud);
+  onSearchClicked(search: Drawing){
+    this._drawing = search;
+    this.output.emit(this._drawing);
+  }
+
+  onTableClicked(data: Drawing){
+    this._drawing = data;
+    this.output.emit(this._drawing);
   }
 }

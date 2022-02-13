@@ -28,12 +28,14 @@
           <button
             class="btn btn-outline-dark btn-sm border-0 mx-1"
             matTooltip="edit"
+            (click)="onClicked(body,action.EDIT)"
           >
             <app-icon [icon]="icon.EDIT" classes="mr-3" size="sm"></app-icon>
           </button>
           <button
             class="btn btn-outline-dark btn-sm border-0 mx-1"
             matTooltip="delete"
+            (click)="onClicked(body,action.DELETE)"
           >
             <app-icon [icon]="icon.DELETE" classes="mr-3" size="sm"></app-icon>
           </button>

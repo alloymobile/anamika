@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { first } from 'rxjs';
-import { Drawing } from 'src/app/shared/model/drawing.model';
+import { Drawing, DrawingAction } from 'src/app/shared/model/drawing.model';
 import { FileService } from 'src/app/shared/services/file/file.service';
 import { appIcon } from 'src/app/shared/services/icons/icon.service';
 
@@ -21,7 +21,10 @@ export class ResourceModelComponent implements OnInit {
   constructor(private formBuilder: FormBuilder
     , public dialogRef: MatDialogRef<ResourceModelComponent>
     , @Inject(MAT_DIALOG_DATA) data
-    , private fileService: FileService) { }
+    , private fileService: FileService) {
+      this._drawing = data;
+      this.imageUrl = this._drawing.imageUrl;
+    }
 
   // convenience getter for easy access to form fields
   get formControl() {
@@ -34,10 +37,10 @@ export class ResourceModelComponent implements OnInit {
 
   createDrawingForm() {
     this.drwaingForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      imageUrl: [{value:'',disabled:true}, [Validators.required]],
-      description: ['', [Validators.required]],
-      client: ['', [Validators.required]]
+      name: [this._drawing.name, [Validators.required]],
+      imageUrl: [{value:this._drawing.imageUrl,disabled:true}, [Validators.required]],
+      description: [this._drawing.description, [Validators.required]],
+      client: [this._drawing.client, [Validators.required]]
     });
   }
 
@@ -48,7 +51,7 @@ export class ResourceModelComponent implements OnInit {
   save(){
     if (this.drwaingForm.valid) {
       // this._login.error ="";
-      this._drawing.id = "";
+      this._drawing.id = this._drawing.id;
       this._drawing.name = this.formControl.name.value;
       this._drawing.imageUrl = this.formControl.imageUrl.value;
       this._drawing.description = this.formControl.description.value;
@@ -58,6 +61,16 @@ export class ResourceModelComponent implements OnInit {
     }else{
       // this._login.error = "There are form errors please fix them"
       // this._login.submitted = false;
+    }
+  }
+
+  getSaveText():string{
+    if(this._drawing.action == DrawingAction.EDIT){
+      return "Update";
+    }else if(this._drawing.action == DrawingAction.DELETE){
+      return "Delete";
+    }else{
+      return "Add";
     }
   }
 
