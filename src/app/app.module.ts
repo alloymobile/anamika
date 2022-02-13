@@ -4,6 +4,8 @@ import { AlloymobileLibraryModule } from './shared/alloymobile-library/alloymobi
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule } from '@angular/material/dialog';
+import {MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,8 @@ import { NavbarComponent } from './shared/routing/navbar/navbar.component';
 import { DashboardPageComponent } from './private/client-page/dashboard-page/dashboard-page.component';
 import { AccountPageComponent } from './private/client-page/account-page/account-page.component';
 import { ResourcePageComponent } from './private/client-page/resource-page/resource-page.component';
+import { ResourceModelComponent } from './private/client-page/resource-page/resource-model/resource-model.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,8 @@ import { ResourcePageComponent } from './private/client-page/resource-page/resou
     PrivacyPolicyPageComponent,
     DashboardPageComponent,
     AccountPageComponent,
-    ResourcePageComponent
+    ResourcePageComponent,
+    ResourceModelComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -40,9 +45,14 @@ import { ResourcePageComponent } from './private/client-page/resource-page/resou
     AlloymobileLibraryModule,
     HttpClientModule,
     MatTooltipModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ResourceModelComponent]
 })
 export class AppModule { }
