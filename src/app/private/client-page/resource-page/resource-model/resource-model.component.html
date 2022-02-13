@@ -1,12 +1,37 @@
-<h2 mat-dialog-title>This is a Dialog title</h2>
+<h2 mat-dialog-title class="text-center">Add Drawing</h2>
 
-<mat-dialog-content [formGroup]="form">
-  <mat-form-field>
-    <input matInput placeholder="Course Description" formControlName="description">
+<mat-dialog-content [formGroup]="drwaingForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
   </mat-form-field>
+  <br>
+  <ng-container *ngIf="imageUrl !=''; then image; else file">
+  </ng-container>
+  <ng-template #image>
+    <mat-form-field appearance="fill">
+      <mat-label>Image</mat-label>
+      <input matInput formControlName="imageUrl" [(ngModel)]="imageUrl">
+    </mat-form-field>
+  </ng-template>
+  <ng-template #file>
+    <input type="file" (change)="onFileChange($event)"/>
+    <span *ngIf="showSpinner"><app-icon [icon]="icon.LOADING" classes="p-1" size="lg" [spin]="showSpinner" ></app-icon></span>
+  </ng-template>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+  <br>
+  <mat-form-field  appearance="fill">
+    <mat-label>Client</mat-label>
+    <input matInput formControlName="client">
+  </mat-form-field>
+  <br>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button"(click)="close()">Close</button>
-  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
 </mat-dialog-actions>

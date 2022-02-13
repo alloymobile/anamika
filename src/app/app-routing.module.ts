@@ -20,7 +20,7 @@ const routes: Routes = [
       {path: 'account', component: AccountPageComponent},
       {path: 'resource', component: ResourcePageComponent}
     ],
-    // canActivate: [AuthService]
+    canActivate: [AuthService]
   },
   { path: 'terms-of-service', component: TermsOfServicePageComponent },
   { path: 'privacy-policy', component: PrivacyPolicyPageComponent },

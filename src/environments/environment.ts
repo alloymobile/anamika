@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   clientApiUrl: 'https://alloymobile-client-app.azurewebsites.net',
-  drawingApiUrl: 'https://alloymobile-drawing-app.azurewebsites.net'
-};
-
+  drawingApiUrl: 'https://alloymobile-drawing-app.azurewebsites.net',
+  imageApiUrl: 'https://alloymobile-image-app.azurewebsites.net'
+}
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
