@@ -50,7 +50,7 @@ export class DrawingService {
     if (this.authService.checkJwtToken()) {
       throw throwError(()=> new Error('unAuthorized'));
     }else{
-        return this.http.post(apiEndPoint, data, { headers: this.createHeadder(token) })
+        return this.http.post(apiEndPoint, Drawing.getDrawingDTO(data), { headers: this.createHeadder(token) })
         .pipe(catchError( error => throwError(()=> new Error(error))));
     }
   }
@@ -62,7 +62,7 @@ export class DrawingService {
     if (this.authService.checkJwtToken()) {
       throw throwError(()=> new Error('unAuthorized'));
     } else {
-      return this.http.put(apiEndPoint, data, { headers: this.createHeadder(token) });
+      return this.http.put(apiEndPoint, Drawing.getDrawingDTO(data), { headers: this.createHeadder(token) });
     }
   }
 

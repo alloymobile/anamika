@@ -1,5 +1,5 @@
 .card-img-top {
-  max-width: 320px;
+  max-width:100%;
   height: 15rem;
   object-fit: cover;
 }
@@ -7,7 +7,7 @@
 @media only screen and (max-width: 768px) {
   .card-img-top {
     max-width: 160px;
-    height: 8rem;
+    height: 7rem;
     object-fit: cover;
   }
 }

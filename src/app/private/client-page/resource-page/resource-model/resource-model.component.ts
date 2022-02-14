@@ -87,4 +87,9 @@ export class ResourceModelComponent implements OnInit {
       this.showSpinner = false;
     });
   }
+
+  compressImage(file){
+    const MAX_MEGABYTE = 2;
+
+  }
 }

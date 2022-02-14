@@ -1,3 +1,6 @@
+<div *ngIf="showSpinner" class="h-100 d-flex justify-content-center align-items-center">
+  <app-icon [icon]="icon.LOADING" classes="mr-3" size="4x" [spin]="showSpinner" ></app-icon>
+</div>
 <div class="container">
   <app-crud [drawings]="drawings" (output)="onCrudClicked($event)"></app-crud>
 </div>

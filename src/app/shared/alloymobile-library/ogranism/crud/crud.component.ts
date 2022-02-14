@@ -14,6 +14,9 @@ export class CrudComponent implements OnInit {
   @Output() output: EventEmitter<Drawing> = new EventEmitter<Drawing>();
   @Input() set drawings(drawings: Drawing[]){
     this._drawings = drawings;
+    // this.items = order.items.map(({id,name,imageUrl,quantity,price})=>{
+    //   return {Slno: id, name: name ,image: imageUrl, quantity : quantity, price: 'CA$ '+quantity * price};
+    // }));
   }
   constructor() { }
 

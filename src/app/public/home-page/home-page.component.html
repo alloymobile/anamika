@@ -3,24 +3,33 @@
 </div>
 <div class="container">
   <mat-tab-group dynamicHeight mat-align-tabs="center">
-    <mat-tab label="List">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-icon [icon]="icon.GALLERY" classes="mr-3" size="2x" ></app-icon>
+      </ng-template>
       <div class="row">
-        <div class="col-lg-6" *ngFor="let drawing of drawings">
+        <div class="col-lg-4 col-md-6" *ngFor="let drawing of drawings">
+            <app-card-gallery [card]="drawing" (output)="onDrawingSelect($event)"></app-card-gallery>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-icon [icon]="icon.LIST" classes="mr-3" size="2x" ></app-icon>
+      </ng-template>
+      <div class="row">
+        <div class="col-12" *ngFor="let drawing of drawings">
             <app-card-list [card]="drawing" (output)="onDrawingSelect($event)"></app-card-list>
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Thumb">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-icon [icon]="icon.CARD" classes="mr-3" size="2x" ></app-icon>
+      </ng-template>
       <div class="row">
         <div class="col-lg-6" *ngFor="let drawing of drawings">
             <app-card-thumb [card]="drawing" (output)="onDrawingSelect($event)"></app-card-thumb>
-        </div>
-      </div>
-    </mat-tab>
-    <mat-tab label="Gallery">
-      <div class="row">
-        <div class="col-lg-6" *ngFor="let drawing of drawings">
-            <app-card-gallery [card]="drawing" (output)="onDrawingSelect($event)"></app-card-gallery>
         </div>
       </div>
     </mat-tab>

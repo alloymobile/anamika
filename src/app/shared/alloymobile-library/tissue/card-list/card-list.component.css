@@ -1,14 +1,9 @@
-.card-img-top {
-  max-width: 320px;
-  height: 15rem;
-  object-fit: cover;
+.card{
+  flex-direction: row;
 }
 
-@media only screen and (max-width: 768px) {
-  .card-img-top {
-    max-width: 160px;
-    height: 8rem;
-    object-fit: cover;
-  }
+.card-img-top {
+  width: 80px;
+  height: 60px;
 }
 

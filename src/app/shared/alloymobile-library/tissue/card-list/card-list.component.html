@@ -1,7 +1,13 @@
 <div class="card border m-2 shadow">
   <img class="card-img-top rounded m-2" [src]="_card.imageUrl" [alt]="_card.description">
-  <div class="card-body m-2">
-    <h1 class="card-title">{{_card.name}}</h1>
-    <button class="btn-primary text-end"  (click)="onCardSelect()">More..</button>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">
+        <h1 class="card-title">{{_card.name}}</h1>
+      </div>
+      <div class="col-6 text-end">
+        <button class="btn-primary"  (click)="onCardSelect()">More..</button>
+      </div>
+    </div>
   </div>
 </div>

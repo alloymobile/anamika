@@ -54,7 +54,10 @@ import {
   faUserPlus,
   faUserLock,
   faMinus,
-  faShoppingCart
+  faShoppingCart,
+  faList,
+  faBorderAll,
+  faAddressCard
 } from '@fortawesome/free-solid-svg-icons';
 
 export enum appIcon {
@@ -130,7 +133,10 @@ export enum appIcon {
   APPLE = 'apple',
   CIRCLE = 'circle',
   MINUS = 'minus',
-  CART = 'cart'
+  CART = 'cart',
+  LIST = "list",
+  CARD = "card",
+  GALLERY = "gallery"
 }
 
 const icons: { [id in appIcon]: IconDefinition } = {
@@ -207,6 +213,9 @@ const icons: { [id in appIcon]: IconDefinition } = {
   circle: faCircle,
   minus: faMinus,
   cart: faShoppingCart,
+  list: faList,
+  card: faAddressCard,
+  gallery: faBorderAll
 };
 
 @Injectable({

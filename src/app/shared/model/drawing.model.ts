@@ -41,6 +41,16 @@ export class Drawing{
         return DrawingAction.ADD;
     }
   }
+
+  static getDrawingDTO(drawing: Drawing){
+    return {
+      id : drawing.id,
+      name : drawing.name,
+      imageUrl : drawing.imageUrl,
+      description : drawing.description,
+      client : drawing.client
+    }
+  }
 }
 
 export enum DrawingAction{
